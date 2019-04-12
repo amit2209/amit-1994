@@ -9,7 +9,7 @@ import (
 
         
 )
-
+//establishing connection with redis
 var redisPool *redis.Pool
 
 func hulloratelimiter(limit int,ctr int) bool{
@@ -32,6 +32,7 @@ func hulloratelimiter(limit int,ctr int) bool{
                         return conn, nil
                 },
         }
+	//cts ->current time stamp ,ts-> timestamp 
             value := []byte
 			err := pool.Do(radix.Cmd(&value, "GET", redisAddr))
 			currentTime := time.Now()
